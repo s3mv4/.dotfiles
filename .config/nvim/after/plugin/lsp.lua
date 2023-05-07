@@ -2,7 +2,7 @@ local lsp = require('lsp-zero').preset({})
 
 lsp.ensure_installed({
     'lua_ls',
-    'rust-analyzer',
+    'rust_analyzer',
     'bashls',
     'clangd',
     'tsserver',
