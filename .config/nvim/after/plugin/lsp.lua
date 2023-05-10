@@ -11,7 +11,14 @@ lsp.ensure_installed({
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
+require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
+    sources = {
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+        { name = 'luasnip' },
+    },
     mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
