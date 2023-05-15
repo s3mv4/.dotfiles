@@ -4,7 +4,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # Options
-setopt autocd
+setopt autocd prompt_subst
 
 # Vi mode
 bindkey -v
@@ -26,7 +26,11 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey "^?" backward-delete-char
 
 # Prompt
-PROMPT="%B%F{red}[%F{green}%n%F{yellow}@%F{blue}%m %F{magenta}%~%F{red}]%F{cyan}%#%f%b "
+# PROMPT='%B%F{red}[%F{green}%n%F{yellow}@%F{blue}%m %F{magenta}%~%F{red}]%F{cyan}%#%f%b '
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%F{blue}%s:(%F{red}%b%F{blue}) '
+PROMPT='%B%F{cyan}%c ${vcs_info_msg_0_}%(?.%F{green}->.%F{red}->)%f%b '
 
 # Aliases
 alias ls='ls --color=auto'
@@ -36,8 +40,15 @@ alias diff='diff --color=auto'
 alias vi='nvim'
 alias vim='nvim'
 
+# Autostart tmux
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    tmux attach || tmux >/dev/null 2>&1
+fi
+
+# Has to be at the bottom of the file {
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# }
