@@ -1,3 +1,8 @@
+# Autostart tmux
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    tmux attach || tmux >/dev/null 2>&1
+fi
+
 # History
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -39,11 +44,6 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias vi='nvim'
 alias vim='nvim'
-
-# Autostart tmux
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-    tmux attach || tmux >/dev/null 2>&1
-fi
 
 # Has to be at the bottom of the file {
 # Autosuggestions
