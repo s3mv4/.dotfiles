@@ -1,4 +1,4 @@
 typeset -U path PATH
-path=(~/.local/bin ~/.config/dwmblocks/scripts $path)
+path=(~/.local/bin $path)
 export PATH
 . "$HOME/.cargo/env"
