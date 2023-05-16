@@ -1,7 +1,7 @@
 # History
 HISTFILE=~/.histfile
 HISTSIZE=1000
-SAVEHIST=1000
+sAVEHIST=1000
 
 # Options
 setopt autocd prompt_subst
@@ -29,8 +29,8 @@ bindkey "^?" backward-delete-char
 # PROMPT='%B%F{red}[%F{green}%n%F{yellow}@%F{blue}%m %F{magenta}%~%F{red}]%F{cyan}%#%f%b '
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%F{blue}%s:(%F{red}%b%F{blue}) '
-PROMPT='%B%F{cyan}%c ${vcs_info_msg_0_}%(?.%F{green}->.%F{red}->)%f%b '
+zstyle ':vcs_info:git:*' formats '%b '
+PROMPT='%B%F{blue}%c %F{yellow}${vcs_info_msg_0_}%(?.%F{green}->.%F{red}->)%f%b '
 
 # Aliases
 alias ls='ls --color=auto'
