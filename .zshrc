@@ -1,7 +1,7 @@
 # History
 HISTFILE=~/.histfile
 HISTSIZE=1000
-sAVEHIST=1000
+SAVEHIST=1000
 
 # Options
 setopt autocd prompt_subst
