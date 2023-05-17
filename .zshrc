@@ -3,8 +3,9 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-# Options
+# Options (man zshoptions)
 setopt autocd prompt_subst
+unsetopt beep
 
 # Vi mode
 bindkey -v
@@ -26,11 +27,10 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey "^?" backward-delete-char
 
 # Prompt
-# PROMPT='%B%F{red}[%F{green}%n%F{yellow}@%F{blue}%m %F{magenta}%~%F{red}]%F{cyan}%#%f%b '
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b '
-PROMPT='%B%F{blue}%c %F{yellow}${vcs_info_msg_0_}%(?.%F{green}->.%F{red}->)%f%b '
+zstyle ':vcs_info:git:*' formats '%b ' # (man zshcontrib)
+PROMPT='%B%F{blue}%c %F{yellow}${vcs_info_msg_0_}%(?.%F{green}->.%F{red}->)%f%b ' # (man zshmisc)
 
 # Aliases
 alias ls='ls --color=auto'
@@ -42,8 +42,8 @@ alias vim='nvim'
 
 # Has to be at the bottom of the file {
 # Autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # pacman -S zsh-autosuggestions
 
 # Syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # pacman -S zsh-syntax-highlighting
 # }
