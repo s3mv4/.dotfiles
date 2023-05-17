@@ -1,0 +1,13 @@
+#!/bin/bash
+
+selection=$((find ~/ ~/.config -mindepth 1 -maxdepth 1 -type d; find ~/projects -mindepth 2 -maxdepth 2 -type d; find ~/projects/javascript -mindepth 2 -maxdepth 2 -type d) | fzf)
+selection_session=$(basename "$selection" | sed 's/\./_/g')
+
+if [[ -z $TMUX ]] && ! tmux has-session -t $selection_session 2> /dev/null; then
+    tmux new-session -s $selection_session -c $selection
+    exit 0
+elif [[ -n $TMUX ]] && ! tmux has-session -t $selection_session 2> /dev/null; then
+    tmux new-session -ds $selection_session -c $selection
+fi
+
+tmux switch-client -t $selection_session
