@@ -30,7 +30,7 @@ bindkey "^?" backward-delete-char
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b ' # (man zshcontrib)
-PROMPT='%B%F{blue}%c %F{yellow}${vcs_info_msg_0_}%(?.%F{green}->.%F{red}->)%f%b ' # (man zshmisc)
+PROMPT='%B%F{blue}%c %F{yellow}${vcs_info_msg_0_}%(?.%F{green}>.%F{red}>)%f%b ' # (man zshmisc)
 
 # Aliases
 alias ls='ls --color=auto'
