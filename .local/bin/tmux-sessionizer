@@ -6,6 +6,8 @@ selection_session=$(basename "$selection" | sed 's/\./_/g')
 if [[ -z $TMUX ]] && ! tmux has-session -t $selection_session 2> /dev/null; then
     tmux new-session -s $selection_session -c $selection
     exit 0
+elif [[ -z $TMUX ]] && tmux has-session -t $selection_session 2> /dev/null; then
+    exit 0
 elif [[ -n $TMUX ]] && ! tmux has-session -t $selection_session 2> /dev/null; then
     tmux new-session -ds $selection_session -c $selection
 fi
