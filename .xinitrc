@@ -1,5 +1,5 @@
 #!/bin/sh
-setxkbmap -layout us -variant dvp -option caps:swapescape &
+setxkbmap -layout us -variant dvp &
 xset r rate 330 50 &
 ~/.fehbg &
 picom &
