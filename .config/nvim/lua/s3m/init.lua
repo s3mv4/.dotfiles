@@ -1,2 +1,2 @@
-require("s3m.remap")
-require("s3m.set")
+require("s3m.options")
+require("s3m.keymaps")
