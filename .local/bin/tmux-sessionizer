@@ -1,6 +1,11 @@
 #!/bin/bash
 
-selection=$((find ~/ ~/.config ~/.local -mindepth 1 -maxdepth 1 -type d; find ~/projects -mindepth 1 -maxdepth 2 -type d; find ~/projects/javascript -mindepth 2 -maxdepth 2 -type d) | fzf)
+if [[ $# -eq 1 ]]; then
+    selection=$1
+else
+    selection=$((find ~/ ~/.config ~/.local -mindepth 1 -maxdepth 1 -type d; find ~/projects -mindepth 1 -maxdepth 2 -type d; find ~/projects/javascript -mindepth 1 -maxdepth 2 -type d) | fzf)
+fi
+
 selection_session=$(basename "$selection" | sed 's/\./_/g')
 
 if [[ -z $TMUX ]] && ! tmux has-session -t $selection_session 2> /dev/null; then

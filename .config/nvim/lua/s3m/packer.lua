@@ -18,6 +18,8 @@ return require("packer").startup(function(use)
         end,
     }
 
+    use { "theprimeagen/harpoon" }
+
     use {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v2.x",
