@@ -26,7 +26,11 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # Allow backspace in insert mode
 bindkey "^?" backward-delete-char
 # Tmux-sessionizer
-bindkey -s "^f" "tmux-sessionizer\n"
+tmux_sessionizer() {
+    tmux-sessionizer
+}
+zle -N tmux_sessionizer
+bindkey "^f" tmux_sessionizer
 
 # Prompt
 autoload -Uz vcs_info
