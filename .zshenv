@@ -1,4 +1,6 @@
 typeset -U path PATH
 path=(~/.local/bin $path)
 export PATH
-. "$HOME/.cargo/env"
+if [[ -e "$HOME/.cargo/env" ]]; then
+    . "$HOME/.cargo/env"
+fi
