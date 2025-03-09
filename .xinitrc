@@ -1,7 +1,7 @@
 #!/bin/sh
 setxkbmap -layout us -variant dvp &
 xset r rate 330 50 &
-xrandr --output DP1 --auto --left-of eDP1 --auto &
+xrandr --output DP1 --auto --above eDP1 --auto &
 ~/.fehbg &
 picom &
 redshift &
