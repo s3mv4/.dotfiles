@@ -1,0 +1,18 @@
+#!/bin/bash
+selection=$(find ~ ~/.config ~/.local -mindepth 1 -maxdepth 1 -type d | fzf)
+[[ -z $selection ]] && exit 0
+selection_session=$(basename $selection | sed 's/\./_/g')
+
+tmux has-session -t $selection_session 2> /dev/null
+session_exists=$?
+
+if [[ -z $TMUX ]] && [[ $session_exists -ne 0 ]]; then
+    tmux new-session -s $selection_session -c $selection
+elif [[ -z $TMUX ]] && [[ $session_exists -eq 0 ]]; then
+    tmux attach-session -t $selection_session
+elif [[ -n $TMUX ]]; then
+    if [[ $session_exists -ne 0 ]]; then
+        tmux new-session -ds $selection_session -c $selection
+    fi
+    tmux switch-client -t $selection_session
+fi
