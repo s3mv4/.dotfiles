@@ -40,6 +40,9 @@ alias ls='ls --color=auto'
 alias la='ls -A --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 # Syntax highlighting and autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
