@@ -10,10 +10,10 @@ vim.keymap.set("v", "<", "<gv")
 
 vim.keymap.set({"n", "v"}, "<leader>y", '"+y')
 
-vim.keymap.set("n", "<leader>x", function() 
+vim.keymap.set("n", "<leader>x", function()
     vim.cmd("silent !chmod +x %")
 end)
 
-vim.keymap.set("n", "<C-f>", function() 
+vim.keymap.set("n", "<C-f>", function()
     vim.cmd("silent !tmux neww tmux-sessionizer")
 end)
