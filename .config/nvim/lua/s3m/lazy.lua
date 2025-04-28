@@ -17,6 +17,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         { import = "s3m.plugins" },
-    },
-    checker = { enabled = true }
+    }
 })
