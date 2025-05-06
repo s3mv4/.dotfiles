@@ -14,6 +14,8 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
