@@ -43,6 +43,7 @@ alias diff='diff --color=auto'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+alias ta='tmux attach'
 
 # Syntax highlighting and autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
