@@ -33,7 +33,7 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
-PROMPT='%B%F{blue}%c %F{yellow}${vcs_info_msg_0_}%(?.%F{green}>.%F{red}>)%f%b '
+PROMPT='%B%F{blue}%~ %F{yellow}${vcs_info_msg_0_}%(?.%F{green}>.%F{red}>)%f%b '
 
 # Aliases
 alias ls='ls --color=auto'
