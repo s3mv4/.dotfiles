@@ -33,8 +33,8 @@ return {
         })
 
         vim.diagnostic.config({
-            virtual_text = false,
-            signs = true,
+            virtual_text = true,
+            signs = false,
             float = {
                 header = "",
                 prefix = "",
