@@ -45,6 +45,9 @@ alias vi='nvim'
 alias vim='nvim'
 alias ta='tmux attach'
 
+# Autosuggestions color
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#81a1c1"
+
 # Syntax highlighting and autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
