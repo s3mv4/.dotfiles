@@ -43,7 +43,7 @@ alias diff='diff --color=auto'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
-alias ta='tmux attach'
+alias ta='tmux attach || tmux'
 
 # Autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#616e88"
