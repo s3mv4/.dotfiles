@@ -1,0 +1,26 @@
+#!/bin/sh
+
+DIR="$HOME/screenshots"
+
+mkdir -p "$DIR"
+
+FILE="$DIR/$(date '+%Y%m%d_%H%M%S').png"
+
+case $1 in
+    select)
+        maim -sou "$FILE"
+        ;;
+    select-clipboard)
+        maim -sou | xclip -sel clipboard -t image/png
+        ;;
+    full)
+        maim -ou "$FILE"
+        ;;
+    full-clipboard)
+        maim -ou | xclip -sel clipboard -t image/png
+        ;;
+    *)
+        echo "select | select-clipboard | full | full-clipboard"
+        exit 1
+        ;;
+esac
