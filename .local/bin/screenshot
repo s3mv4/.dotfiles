@@ -13,11 +13,17 @@ case $1 in
     select-clipboard)
         maim -sou | xclip -sel clipboard -t image/png
         ;;
+    select-clipboard-save)
+        maim -sou | tee "$FILE" | xclip -sel clipboard -t image/png
+        ;;
     full)
         maim -ou "$FILE"
         ;;
     full-clipboard)
         maim -ou | xclip -sel clipboard -t image/png
+        ;;
+    full-clipboard-save)
+        maim -ou | tee "$FILE" | xclip -sel clipboard -t image/png
         ;;
     *)
         echo "select | select-clipboard | full | full-clipboard"
