@@ -30,3 +30,4 @@ case $1 in
         exit 1
         ;;
 esac
+[ ! -s "$FILE" ] && rm -f "$FILE"
