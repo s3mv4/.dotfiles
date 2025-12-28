@@ -1,4 +1,5 @@
 #!/bin/bash
+
 current_year=$(date +%Y)
 current_month=$(date +%m)
 end_of_url=$(curl -s https://bingwallpaper.anerg.com/archive/au/$current_year$current_month | awk -F '"' '/detail\/au/ {print $2}' | head -n 1)
@@ -13,8 +14,13 @@ case $1 in
         image_url=$(curl -s https://bingwallpaper.anerg.com/detail/au/RuffedLemur | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | tail -n 1)
         ;;
     *)
-        image_url=$(curl -s https://bingwallpaper.anerg.com/$end_of_url | awk -F '"' '/btn d-block btn-warning/ {print $2}')
+        image_url=$(curl -s https://bingwallpaper.anerg.com/detail/au/RuffedLemur | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | tail -n 1)
         ;;
 esac
 curl -s -o ~/.bing-wallpaper.jpg $image_url
-feh --bg-fill ~/.bing-wallpaper.jpg
+
+source ~/ImageGoNord-cli/venv/bin/activate
+export PYTHONPATH=$PYTHONPATH:~/ImageGoNord-cli/src:~/ImageGoNord-cli/tests
+python ~/ImageGoNord-cli/src/image_go_nord_client --img="$HOME/.bing-wallpaper.jpg" --out="$HOME/.bing-wallpaper-nord.jpg"
+feh --bg-fill ~/.bing-wallpaper-nord.jpg
+deactivate
