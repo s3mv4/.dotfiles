@@ -4,16 +4,16 @@ current_month=$(date +%m)
 end_of_url=$(curl -s https://bingwallpaper.anerg.com/archive/au/$current_year$current_month | awk -F '"' '/detail\/au/ {print $2}' | head -n 1)
 case $1 in
     high)
-        image_url=$(curl -s https://bingwallpaper.anerg.com/$end_of_url | awk -F '"' '/btn d-block btn-warning/ {print $2}')
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-warning/ {print $2}')
         ;;
     medium)
-        image_url=$(curl -s https://bingwallpaper.anerg.com/detail/au/RuffedLemur | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | head -n 1)
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | head -n 1)
         ;;
     low)
-        image_url=$(curl -s https://bingwallpaper.anerg.com/detail/au/RuffedLemur | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | tail -n 1)
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | tail -n 1)
         ;;
     *)
-        image_url=$(curl -s https://bingwallpaper.anerg.com/$end_of_url | awk -F '"' '/btn d-block btn-warning/ {print $2}')
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-warning/ {print $2}')
         ;;
 esac
 curl -s -o ~/.bing-wallpaper.jpg $image_url
