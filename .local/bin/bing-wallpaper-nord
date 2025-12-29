@@ -1,8 +1,27 @@
 #!/bin/bash
 
-current_year=$(date +%Y)
-current_month=$(date +%m)
-end_of_url=$(curl -s https://bingwallpaper.anerg.com/archive/au/$current_year$current_month | awk -F '"' '/detail\/au/ {print $2}' | head -n 1)
+if [[ $# -ge 3 ]]; then
+    year=$1
+    month=$(printf "%02d" $2)
+    day=$((10#$3))
+    [[ $# -ge 4 ]] && quality=$4
+else
+    year=$(date +%Y)
+    month=$(date +%m)
+    day=$((10#$(date +%d)))
+    [[ $# -ge 1 ]] && quality=$1
+fi
+
+urls=$(curl -s https://bingwallpaper.anerg.com/archive/au/$year$month | awk -F '"' '/detail\/au/ {print $2}')
+amount_of_days=$(echo "$urls" | wc -l)
+
+if (( day < 1 || day > amount_of_days )); then
+    echo "invalid date"
+    exit 1
+fi
+
+end_of_url=$(echo "$urls" | tail -n $day | head -n 1)
+
 case $1 in
     high)
         image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-warning/ {print $2}')
