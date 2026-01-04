@@ -44,6 +44,7 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias ta='tmux attach || tmux'
+alias clear='clear -x'
 
 # Autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#616e88"
