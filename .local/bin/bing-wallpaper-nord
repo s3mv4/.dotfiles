@@ -8,12 +8,16 @@ if [[ $# -ge 3 ]]; then
 else
     year=$(date +%Y)
     month=$(date +%m)
-    day=$((10#$(date +%d)))
+    day=-1
     [[ $# -ge 1 ]] && quality=$1
 fi
 
 urls=$(curl -s https://bingwallpaper.anerg.com/archive/au/$year$month | awk -F '"' '/detail\/au/ {print $2}')
 amount_of_days=$(echo "$urls" | wc -l)
+
+if [[ $day -eq -1 ]]; then
+    day=$amount_of_days
+fi
 
 if (( day < 1 || day > amount_of_days )); then
     echo "invalid date"
