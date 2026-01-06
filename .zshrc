@@ -41,9 +41,7 @@ alias la='ls -A --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
-alias ta='tmux attach || tmux'
+alias t='tmux-sessionizer $HOME'
 alias clear='clear -x'
 
 # Autosuggestions color
