@@ -3,7 +3,7 @@ setxkbmap us dvp &
 xset r rate 200 30 &
 xset b off &
 xrandr --output DP-1 --auto --left-of eDP-1 --auto &
-bing-wallpaper &
+~/.fehbg &
 picom &
 redshift &
 dwmblocks &
