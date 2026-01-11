@@ -1,0 +1,3 @@
+#!/bin/sh
+time=$(date +"%H:%M")
+echo "󰥔 $time"

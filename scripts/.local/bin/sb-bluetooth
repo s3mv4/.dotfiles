@@ -1,0 +1,4 @@
+#!/bin/sh
+devices=$(bluetoothctl devices Connected | awk '/Device/ {for (i=3; i<NF; i++) printf $i " "; print $NF}' | sed -z 's/\n/, /g;s/, $/\n/')
+[ -z $devices] && icon="󰂲" || icon="󰂯"
+echo "$icon $devices"

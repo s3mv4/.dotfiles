@@ -1,0 +1,5 @@
+#!/bin/sh
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume/ {print $5}')
+mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+[ $mute = "yes" ] && icon="󰖁" || icon="󰕾"
+echo "$icon $volume"
