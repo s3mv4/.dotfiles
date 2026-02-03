@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selection=$1
 else
-    selection=$((echo "$HOME"; find ~ ~/.config ~/.local -mindepth 1 -maxdepth 1 -type d) | fzf)
+    selection=$((echo "$HOME"; find -L ~ ~/.config ~/.local -mindepth 1 -maxdepth 1 -type d) | fzf)
 fi
 
 [[ -z $selection ]] && exit 0
