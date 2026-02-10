@@ -38,4 +38,4 @@ set recolor-lightcolor          "#2E3440"
 set recolor-darkcolor           "#ECEFF4"
 set recolor                     "false"
 set font                        "JetBrainsMonoNL Nerd Font"
-set guioptions                  none
+set guioptions                  s
