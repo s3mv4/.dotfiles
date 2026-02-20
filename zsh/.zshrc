@@ -36,9 +36,9 @@ zstyle ':vcs_info:git:*' formats '%b '
 PROMPT='%B%F{blue}%~ %F{yellow}${vcs_info_msg_0_}%(?.%F{green}>.%F{red}>)%f%b '
 
 # Aliases
-alias ls='ls -F --color=auto'
-alias la='ls -AF --color=auto'
-alias ll='ls -AFlh --color=auto'
+alias ls='ls -F --group-directories-first --color=auto'
+alias la='ls -AF --group-directories-first --color=auto'
+alias ll='ls -AFlh --group-directories-first --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias v='nvim'
