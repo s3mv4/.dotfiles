@@ -44,6 +44,7 @@ alias diff='diff --color=auto'
 alias v='nvim'
 alias t='tmux-sessionizer $HOME'
 alias clear='clear -x'
+alias z='devour zathura'
 
 # Autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#616e88"
