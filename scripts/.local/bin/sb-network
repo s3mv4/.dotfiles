@@ -1,0 +1,6 @@
+#!/bin/sh
+ssid=$(nmcli -f ACTIVE,SSID dev wifi | awk '$1 == "yes" {for (i=2; i<NF; i++) printf $i " "; print $NF}')
+lan=$(nmcli device status | awk '/ethernet/ {for (i=4; i<NF; i++) printf $i " "; print $NF; exit}')
+[ -z $ssid ] && ssid_icon="󰖪" || ssid_icon="󰖩"
+[ $lan == "--" ] && lan_icon="󰈂" && lan="" || lan_icon="󰈁"
+echo "$ssid_icon $ssid $lan_icon $lan"

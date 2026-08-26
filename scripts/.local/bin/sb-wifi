@@ -1,4 +1,0 @@
-#!/bin/sh
-ssid=$(nmcli -f ACTIVE,SSID dev wifi | awk '$1 == "yes" {for (i=2; i<NF; i++) printf $i " "; print $NF}')
-[ -z $ssid ] && icon="󰖪" || icon="󰖩"
-echo "$icon $ssid"
