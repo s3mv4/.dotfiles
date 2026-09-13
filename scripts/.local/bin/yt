@@ -1,9 +1,12 @@
 #!/bin/bash
 
-query="$1"
-results="${2:-10}"
-
-id=$(yt-dlp "ytsearch$results:$query" --flat-playlist --print $'%(title)s\t%(uploader)s\t%(duration_string)s\t%(id)s' | column -t -s $'\t' | fzf | awk '{print $NF}')
+if [ "$1" = "-wl" ]; then
+    id=$(yt-dlp ":ytwatchlater" --cookies-from-browser firefox --flat-playlist --print $'%(title)s\t%(uploader)s\t%(duration_string)s\t%(id)s' | column -t -s $'\t' | fzf | awk '{print $NF}')
+else
+    query="$1"
+    results="${2:-10}"
+    id=$(yt-dlp "ytsearch$results:$query" --flat-playlist --print $'%(title)s\t%(uploader)s\t%(duration_string)s\t%(id)s' | column -t -s $'\t' | fzf | awk '{print $NF}')
+fi
 
 [ -z "$id" ] && exit 0
 
