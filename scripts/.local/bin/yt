@@ -1,0 +1,11 @@
+#!/bin/bash
+
+query="$1"
+results="${2:-10}"
+
+id=$(yt-dlp "ytsearch$results:$query" --flat-playlist --print $'%(title)s\t%(uploader)s\t%(duration_string)s\t%(id)s' | column -t -s $'\t' | fzf | awk '{print $NF}')
+
+[ -z "$id" ] && exit 0
+
+
+mpv "https://youtu.be/$id"
