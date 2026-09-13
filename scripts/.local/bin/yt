@@ -11,4 +11,4 @@ fi
 [ -z "$id" ] && exit 0
 
 
-mpv "https://youtu.be/$id"
+mpv --ytdl-format="bv*[height<=1080]+ba/b[height<=1080]" "https://youtu.be/$id"
