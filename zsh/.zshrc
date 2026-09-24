@@ -54,7 +54,7 @@ alias diff='diff --color=auto'
 alias v='nvim'
 alias t='tmux-sessionizer $HOME'
 alias clear='clear -x'
-alias z='devour zathura'
+alias z='zathura'
 if command -v btop &>/dev/null; then
     alias top='btop'
 fi
