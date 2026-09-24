@@ -36,17 +36,28 @@ zstyle ':vcs_info:git:*' formats '%b '
 PROMPT='%B%F{blue}%~ %F{yellow}${vcs_info_msg_0_}%(?.%F{green}>.%F{red}>)%f%b '
 
 # Aliases
-alias ls='eza -F --group-directories-first --icons'
-alias la='eza -aF --group-directories-first --icons'
-alias ll='eza -alF --group-directories-first --icons --header --time-style=long-iso --git'
-alias cat='bat --theme=Nord -p --paging=never'
+if command -v eza &>/dev/null; then
+    alias ls='eza -F --group-directories-first --icons'
+    alias la='eza -aF --group-directories-first --icons'
+    alias ll='eza -alF --group-directories-first --icons --header --time-style=long-iso --git'
+    alias lt='eza --tree --group-directories-first --icons --level=2'
+else
+    alias ls='ls -F --group-directories-first --color=auto'
+    alias la='ls -AF --group-directories-first --color=auto'
+    alias ll='ls -AlhF --group-directories-first --color=auto'
+fi
+if command -v bat &>/dev/null; then
+    alias cat='bat --theme=Nord -p --paging=never'
+fi
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias v='nvim'
 alias t='tmux-sessionizer $HOME'
 alias clear='clear -x'
 alias z='devour zathura'
-alias top='btop'
+if command -v btop &>/dev/null; then
+    alias top='btop'
+fi
 
 # Autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#616e88"
