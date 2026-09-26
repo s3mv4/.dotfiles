@@ -1,7 +1,9 @@
 set preview true
 set previewer ~/.config/lf/scope
 
-set hidden true
 set icons true
+
+set hidden true
+set scrolloff 10
 
 map D delete
