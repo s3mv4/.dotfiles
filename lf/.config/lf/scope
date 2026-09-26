@@ -1,0 +1,26 @@
+#!/bin/sh
+
+case "$1" in
+    *.tar*|*.tgz)
+        tar tf "$1" 2>/dev/null
+        ;;
+    *.zip)
+        unzip -l "$1" 2>/dev/null
+        ;;
+    *.rar)
+        unrar l "$1" 2>/dev/null
+        ;;
+    *.png|*.jpg|*.jpeg|*.gif|*.webp)
+        chafa --format=symbols --size="$2"x"$3" "$1" 2>/dev/null
+        ;;
+    *.pdf)
+        pdftotext "$1" - 2>/dev/null
+        ;;
+    *)
+        if file --mime-type --brief "$1" | grep -q "^text/"; then
+            bat --color=always --style=numbers --theme=Nord --line-range=:500 "$1" 2>/dev/null
+        else
+            file -L "$1" 2>/dev/null
+        fi
+        ;;
+esac

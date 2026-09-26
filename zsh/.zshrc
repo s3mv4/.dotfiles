@@ -37,10 +37,10 @@ PROMPT='%B%F{blue}%~ %F{yellow}${vcs_info_msg_0_}%(?.%F{green}>.%F{red}>)%f%b '
 
 # Aliases
 if command -v eza &>/dev/null; then
-    alias ls='eza -F --group-directories-first --icons'
-    alias la='eza -aF --group-directories-first --icons'
-    alias ll='eza -alF --group-directories-first --icons --header --time-style=long-iso --git'
-    alias lt='eza --tree --group-directories-first --icons --level=2'
+    alias ls='eza -F --group-directories-first --icons=always'
+    alias la='eza -aF --group-directories-first --icons=always'
+    alias ll='eza -alF --group-directories-first --icons=always --header --time-style=long-iso --git'
+    alias lt='eza --tree --group-directories-first --icons=always --level=2'
 else
     alias ls='ls -F --group-directories-first --color=auto'
     alias la='ls -AF --group-directories-first --color=auto'
@@ -58,6 +58,7 @@ alias z='zathura'
 if command -v btop &>/dev/null; then
     alias top='btop'
 fi
+alias mkdir='mkdir -p'
 
 # Autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#616e88"
