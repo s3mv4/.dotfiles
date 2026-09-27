@@ -1,0 +1,32 @@
+[global]
+    monitor = 0
+    follow = keyboard
+    width = 300
+    height = (0, 300)
+    origin = top-right
+    offset = (6, 33)
+    transparency = 10
+    padding = 8
+    horizontal_padding = 8
+    frame_width = 2
+    frame_color = "#5e81ac"
+    gap_size = 5
+    font = JetBrainsMonoNL Nerd Font 8
+    format = "<small>%a</small>\n<b>%s</b>\n%b"
+    show_indicators = false
+    corner_radius = 5
+
+[urgency_low]
+    background = "#2e3440"
+    foreground = "#d8dee9"
+    timeout = 5
+
+[urgency_normal]
+    background = "#3b4252"
+    foreground = "#eceff4"
+    timeout = 10
+
+[urgency_critical]
+    background = "#bf616a"
+    foreground = "#eceff4"
+    timeout = 15
