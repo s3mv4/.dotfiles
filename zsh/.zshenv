@@ -1,3 +1,3 @@
 typeset -U path PATH
-path=(~/.local/bin $path)
+path=(~/.local/bin ~/.local/bin/statusbar $path)
 export PATH

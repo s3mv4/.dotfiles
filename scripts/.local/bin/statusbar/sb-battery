@@ -1,0 +1,16 @@
+#!/bin/sh
+capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+status=$(cat /sys/class/power_supply/BAT0/status)
+
+[ "$status" = "Charging" ] && icon="󰂅" || icon="󰁹"
+
+if [ "$status" = "Discharging" ] && [ "$capacity" -le 15 ]; then
+    if [ ! -e ~/.cache/sb-battery-low ]; then
+        notify-send -u critical "󱊡 Battery Low" "$capacity%"
+        touch ~/.cache/sb-battery-low
+    fi
+else
+    rm -f ~/.cache/sb-battery-low
+fi
+
+echo "$icon $capacity%"

@@ -5,6 +5,7 @@
     height = (0, 300)
     origin = top-right
     offset = (6, 33)
+    progress_bar_corner_radius = 5
     transparency = 10
     padding = 8
     horizontal_padding = 8
@@ -19,14 +20,17 @@
 [urgency_low]
     background = "#2e3440"
     foreground = "#d8dee9"
+    highlight = "#d8dee9"
     timeout = 5
 
 [urgency_normal]
     background = "#3b4252"
     foreground = "#eceff4"
+    highlight = "#eceff4"
     timeout = 10
 
 [urgency_critical]
     background = "#bf616a"
     foreground = "#eceff4"
+    highlight = "#eceff4"
     timeout = 15
