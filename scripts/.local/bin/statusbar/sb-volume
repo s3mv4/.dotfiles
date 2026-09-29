@@ -5,6 +5,6 @@ mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
 [ $mute = "yes" ] && icon="󰖁" || icon="󰕾"
 
 num=${volume%\%}
-notify-send -h string:x-dunst-stack-tag:volume -h int:value:"$num" "$icon $volume"
+notify-send -u low -h string:x-dunst-stack-tag:volume -h int:value:"$num" "$icon $volume"
 
 echo "$icon $volume"

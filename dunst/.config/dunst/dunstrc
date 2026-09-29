@@ -12,7 +12,7 @@
     frame_width = 2
     frame_color = "#5e81ac"
     gap_size = 5
-    font = JetBrainsMonoNL Nerd Font 8
+    font = JetBrainsMonoNL Nerd Font 10
     format = "<small>%a</small>\n<b>%s</b>\n%b"
     show_indicators = false
     corner_radius = 5
@@ -21,16 +21,16 @@
     background = "#2e3440"
     foreground = "#d8dee9"
     highlight = "#d8dee9"
-    timeout = 5
+    timeout = 3
 
 [urgency_normal]
     background = "#3b4252"
     foreground = "#eceff4"
     highlight = "#eceff4"
-    timeout = 10
+    timeout = 5
 
 [urgency_critical]
     background = "#bf616a"
     foreground = "#eceff4"
     highlight = "#eceff4"
-    timeout = 15
+    timeout = 10
