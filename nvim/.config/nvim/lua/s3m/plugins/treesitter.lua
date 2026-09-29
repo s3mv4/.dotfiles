@@ -19,7 +19,6 @@ return {
             "typescript",
 
             "json",
-            "jsonc",
             "yaml",
             "toml",
 
