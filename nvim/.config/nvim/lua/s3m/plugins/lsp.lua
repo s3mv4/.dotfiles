@@ -9,7 +9,24 @@ return {
 
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = { "lua_ls", "pyright", "clangd", "bashls", "ts_ls", "html", "cssls" },
+            ensure_installed = {
+                "lua_ls",
+
+                "html",
+                "cssls",
+                "ts_ls",
+
+                "jsonls",
+
+                "bashls",
+
+                "pyright",
+                "clangd",
+                "rust_analyzer",
+                "gopls",
+
+                "texlab"
+            },
             handlers = {
                 function(server_name)
                     require("lspconfig")[server_name].setup({
