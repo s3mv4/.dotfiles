@@ -6,28 +6,55 @@ mkdir -p "$DIR"
 
 FILE="$DIR/$(date '+%Y%m%d_%H%M%S').png"
 
-case $1 in
-    select)
-        maim -sou "$FILE"
-        ;;
-    select-clipboard)
-        maim -sou | xclip -sel clipboard -t image/png
-        ;;
-    select-clipboard-save)
-        maim -sou | tee "$FILE" | xclip -sel clipboard -t image/png
-        ;;
-    full)
-        maim -ou "$FILE"
-        ;;
-    full-clipboard)
-        maim -ou | xclip -sel clipboard -t image/png
-        ;;
-    full-clipboard-save)
-        maim -ou | tee "$FILE" | xclip -sel clipboard -t image/png
-        ;;
-    *)
-        echo "select | select-clipboard | full | full-clipboard"
-        exit 1
-        ;;
-esac
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    case $1 in
+        select)
+            grim -g "$(slurp)" "$FILE"
+            ;;
+        select-clipboard)
+            grim -g "$(slurp)" - | wl-copy -t image/png
+            ;;
+        select-clipboard-save)
+            grim -g "$(slurp)" - | tee "$FILE" | wl-copy -t image/png
+            ;;
+        full)
+            grim "$FILE"
+            ;;
+        full-clipboard)
+            grim - | wl-copy -t image/png
+            ;;
+        full-clipboard-save)
+            grim - | tee "$FILE" | wl-copy -t image/png
+            ;;
+        *)
+            echo "select | select-clipboard | select-clipboard-save | full | full-clipboard | full-clipboard-save"
+            exit 1
+            ;;
+    esac
+elif [ -n "$DISPLAY" ]; then
+    case $1 in
+        select)
+            maim -sou "$FILE"
+            ;;
+        select-clipboard)
+            maim -sou | xclip -sel clipboard -t image/png
+            ;;
+        select-clipboard-save)
+            maim -sou | tee "$FILE" | xclip -sel clipboard -t image/png
+            ;;
+        full)
+            maim -ou "$FILE"
+            ;;
+        full-clipboard)
+            maim -ou | xclip -sel clipboard -t image/png
+            ;;
+        full-clipboard-save)
+            maim -ou | tee "$FILE" | xclip -sel clipboard -t image/png
+            ;;
+        *)
+            echo "select | select-clipboard | select-clipboard-save | full | full-clipboard | full-clipboard-save"
+            exit 1
+            ;;
+    esac
+fi
 [ ! -s "$FILE" ] && rm -f "$FILE"

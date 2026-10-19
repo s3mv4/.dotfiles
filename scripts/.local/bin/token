@@ -1,2 +1,6 @@
 #!/bin/sh
-cat ~/.token | xclip -sel clipboard
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    cat ~/.token | wl-copy
+elif [ -n "$DISPLAY" ]; then
+    cat ~/.token | xclip -sel clipboard
+fi

@@ -45,5 +45,9 @@ curl -s -o ~/.bing-wallpaper.jpg $image_url
 source ~/ImageGoNord-cli/venv/bin/activate
 export PYTHONPATH=$PYTHONPATH:~/ImageGoNord-cli/src:~/ImageGoNord-cli/tests
 python ~/ImageGoNord-cli/src/image_go_nord_client --img="$HOME/.bing-wallpaper.jpg" --out="$HOME/.bing-wallpaper-nord.jpg"
-feh --bg-fill ~/.bing-wallpaper-nord.jpg
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    swaybg -i ~/.bing-wallpaper-nord.jpg -m fill
+elif [ -n "$DISPLAY" ]; then
+    feh --bg-fill ~/.bing-wallpaper-nord.jpg
+fi
 deactivate

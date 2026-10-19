@@ -41,4 +41,8 @@ case $quality in
         ;;
 esac
 curl -s -o ~/.bing-wallpaper.jpg $image_url
-feh --bg-fill ~/.bing-wallpaper.jpg
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    swaybg -i ~/.bing-wallpaper.jpg -m fill
+elif [ -n "$DISPLAY" ]; then
+    feh --bg-fill ~/.bing-wallpaper.jpg
+fi
