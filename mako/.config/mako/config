@@ -10,7 +10,8 @@ border-radius=0
 background-color=#3b4252e6
 text-color=#eceff4
 default-timeout=5000
-format=<small>%a</small>\n<b>%s</b>\n%b
+format=<b>%s</b>\n%b
+layer=overlay
 
 [urgency=low]
 background-color=#2e3440e6
