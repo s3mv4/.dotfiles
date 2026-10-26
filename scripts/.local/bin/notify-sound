@@ -1,0 +1,17 @@
+#!/bin/sh
+exec 9>/tmp/notify-sound.lock
+flock -n 9 || exit 0
+
+saved=/tmp/notify-sound-volumes
+
+pactl list sink-inputs | awk '/Sink Input/ {id = substr($3, 2)} /Volume/ {print id, $5}' | tr -d '%' > "$saved"
+
+while read -r id vol; do
+    pactl set-sink-input-volume "$id" "$((vol * 50 / 100))%"
+done < "$saved"
+
+paplay ~/.notify.mp3
+
+while read -r id vol; do
+    pactl set-sink-input-volume "$id" "${vol}%"
+done < "$saved"
