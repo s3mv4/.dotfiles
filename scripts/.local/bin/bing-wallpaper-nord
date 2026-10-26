@@ -12,7 +12,7 @@ else
     [[ $# -ge 1 ]] && quality=$1
 fi
 
-urls=$(curl -s https://bingwallpaper.anerg.com/archive/au/$year$month | awk -F '"' '/detail\/au/ {print $2}')
+urls=$(curl -s https://bingwallpaper.anerg.com/archive/au/$year$month | awk -F '"' '/detail\/au/ {print $4}')
 amount_of_days=$(echo "$urls" | wc -l)
 
 if [[ $day -eq -1 ]]; then
@@ -26,18 +26,18 @@ fi
 
 end_of_url=$(echo "$urls" | tail -n $day | head -n 1)
 
-case $1 in
+case $quality in
     high)
-        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-warning/ {print $2}')
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/download-primary/ {print $2}')
         ;;
     medium)
-        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | head -n 1)
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/class="download-option"/ {print $2}' | head -n 1)
         ;;
     low)
-        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | tail -n 1)
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/class="download-option"/ {print $2}' | head -n 2 | tail -n 1)
         ;;
     *)
-        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/btn d-block btn-secondary/ {print prev} {prev = $2}' | tail -n 1)
+        image_url=$(curl -s https://bingwallpaper.anerg.com$end_of_url | awk -F '"' '/class="download-option"/ {print $2}' | head -n 2 | tail -n 1)
         ;;
 esac
 curl -s -o ~/.bing-wallpaper.jpg $image_url
