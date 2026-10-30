@@ -2,6 +2,19 @@
 capacity=$(cat /sys/class/power_supply/BAT0/capacity)
 status=$(cat /sys/class/power_supply/BAT0/status)
 
+mode=$(tlp-stat -m | awk -F '/' '{print $1}')
+case "$mode" in
+    "performance")
+        mode_icon=" 󰓅"
+        ;;
+    "balanced")
+        mode_icon=" 󰗑"
+        ;;
+    "power-saver")
+        mode_icon=" 󰌪"
+        ;;
+esac
+
 [ "$status" = "Charging" ] && icon="󰂅" || icon="󰁹"
 
 if [ "$status" = "Discharging" ] && [ "$capacity" -le 15 ]; then
@@ -13,4 +26,4 @@ else
     rm -f ~/.cache/sb-battery-low
 fi
 
-echo "$icon $capacity%"
+echo "$icon $capacity%$mode_icon"
