@@ -12,7 +12,8 @@ text-color=#eceff4
 default-timeout=5000
 format=<b>%s</b>\n%b
 layer=overlay
-on-notify=exec ~/.local/bin/notify-sound
+# on-notify=exec ~/.local/bin/notify-sound
+on-notify=none
 
 [category=volume]
 on-notify=none
